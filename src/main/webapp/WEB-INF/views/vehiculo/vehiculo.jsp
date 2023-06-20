@@ -155,7 +155,7 @@
 
 <div class="modal fade" id="modal-lg">
 	<div class="modal-dialog modal-xl">
-		<form action="/vehiculo/guardar" method="post">
+		<form action="/vehiculo/guardar" method="post" onsubmit="return validarFormulario()">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h4 class="modal-title">Vehiculo</h4>
@@ -165,14 +165,14 @@
 					</button>
 				</div>
 				<div class="modal-body">
-				<input type="hidden" class="form-control is-valid" name="id" id="identificador">
+				<input type="hidden" class="form-control" name="id" id="identificador">
 					<div class="row">
 						<div class="col-4">
 							<div class="form-group">
 								<label class="col-form-label" for="sucursal">Sucursal:</label> <select
-									class="form-control select2 is-valid" style="width: 100%;"
+									class="form-control select" style="width: 100%;"
 									name="sucursal" id="sucursal">
-									<option value="-1">-- Seleccionar --</option>
+									<option value="-1">-- SELECCIONAR --</option>
 									<c:forEach items="${sucursales}" var="sucursal">
 										<option value="${sucursal.id}">${sucursal.sucursal}</option>
 									</c:forEach>
@@ -184,9 +184,9 @@
 						<div class="col-4">
 							<div class="form-group">
 								<label class="col-form-label" for="estado">Estado:</label> <select
-									class="form-control select2 is-valid" style="width: 100%;"
+									class="form-control select2" style="width: 100%;"
 									name="estado" id="estado">
-									<option value="-1">-- Seleccionar --</option>
+									<option value="-1">-- SELECCIONAR --</option>
 									<c:forEach items="${estados}" var="estado">
 										<option value="${estado.id}">${estado.estado}</option>
 									</c:forEach>
@@ -196,9 +196,9 @@
 						<div class="col-4">
 							<div class="form-group">
 								<label class="col-form-label" for=tipoAutomovil>Tipo
-									Vehiculo:</label> <select class="form-control select2 is-valid"
+									Vehiculo:</label> <select class="form-control select2"
 									style="width: 100%;" name="tipoAutomovil" id="tipoAutomovil">
-									<option value="-1">-- Seleccionar --</option>
+									<option value="-1">-- SELECCIONAR --</option>
 									<c:forEach items="${tiposCarro}" var="tipo">
 										<option value="${tipo.id}">${tipo.tipo}</option>
 									</c:forEach>
@@ -210,9 +210,9 @@
 						<div class="col-4">
 							<div class="form-group">
 								<label class="col-form-label" for="marca">Marca:</label> <select
-									class="form-control select2 is-valid" style="width: 100%;"
+									class="form-control select2" style="width: 100%;"
 									name="marca" id="marca">
-									<option value="-1">-- Seleccionar --</option>
+									<option value="-1">-- SELECCIONAR --</option>
 									<c:forEach items="${marcas}" var="marca">
 										<option value="${marca.id}">${marca.marca}</option>
 									</c:forEach>
@@ -222,7 +222,7 @@
 						<div class="col-4">
 							<div class="form-group">
 								<label class="col-form-label" for="subMarca">SubMarca:</label> <select
-									class="form-control select2 is-valid" style="width: 100%;"
+									class="form-control select2" style="width: 100%;"
 									name="subMarca" id="subMarca"></select>
 							</div>
 						</div>
@@ -231,16 +231,16 @@
 						<div class="col-4">
 							<div class="form-group">
 								<label class="col-form-label" for="numeroSerie">N Serie:</label>
-								<input type="text" class="form-control is-valid"
+								<input type="text" class="form-control "
 									name="numeroSerie" id="numeroSerie">
 							</div>
 						</div>
 						<div class="col-4">
 							<div class="form-group">
 								<label class="col-form-label" for="color">Color:</label> <select
-									class="form-control select2 is-valid" style="width: 100%;"
+									class="form-control select2" style="width: 100%;"
 									name="color" id="color">
-									<option value="-1">-- Seleccionar --</option>
+									<option value="-1">-- SELECCIONAR --</option>
 									<c:forEach items="${colores}" var="color">
 										<option value="${color.id}">${color.color}</option>
 									</c:forEach>
@@ -250,7 +250,7 @@
 						<div class="col-4">
 							<div class="form-group">
 								<label class="col-form-label" for="nPuertas">N Puertas:</label>
-								<input type="text" class="form-control is-valid" name="nPuertas" id="nPuertas">
+								<input type="text" class="form-control" name="nPuertas" id="nPuertas">
 							</div>
 						</div>
 					</div>
@@ -258,19 +258,19 @@
 						<div class="col-4">
 							<div class="form-group">
 								<label class="col-form-label" for="modelo">Modelo:</label> <input
-									type="text" class="form-control is-valid" name="modelo" id="modelo">
+									type="text" class="form-control" name="modelo" id="modelo">
 							</div>
 						</div>
 						<div class="col-4">
 							<div class="form-group">
 								<label class="col-form-label" for="precio">Precio:</label> <input
-									type="text" class="form-control is-valid" name="precio" id="precio">
+									type="text" class="form-control" name="precio" id="precio">
 							</div>
 						</div>
 						<div class="col-4">
 							<div class="form-group">
 								<label class="col-form-label" for="kilometraje">kilometraje:</label>
-								<input type="text" class="form-control is-valid"
+								<input type="text" class="form-control"
 									name="kilometraje" id="kilometraje">
 							</div>
 						</div>
@@ -294,74 +294,7 @@
 		<!-- /.modal-content -->
 	</div>
 	<!-- /.modal-dialog -->
+	<script src="../../../resources/build/js/vehiculo.js"></script>
 </div>
 <!-- /.modal -->
-
-<script type="text/javascript">
-		var identificador = document.getElementById('identificador');
-	    var tipoAutomovil = document.getElementById('tipoAutomovil');
-	    var numeroSerie = document.getElementById('numeroSerie');
-		var marca = document.getElementById('marca');
-		var subMarca = document.getElementById('subMarca');
-		var modelo = document.getElementById('modelo');
-		var color = document.getElementById('color');
-		var estado = document.getElementById('estado');
-		var precio = document.getElementById('precio');
-		var nPuertas = document.getElementById('nPuertas');
-		var observaciones = document.getElementById('observaciones');
-		var kilometraje = document.getElementById('kilometraje');
-		var sucursal = document.getElementById('sucursal');
-
-		marca.addEventListener('change', () => {
-			getSubMarca(marca.value);
-		});
-
-	const getSubMarca = (idMarca) => {
-			fetch('/vehiculo/getSubMarcas/' + idMarca)
-			.then(resp => resp.json())
-			.then(result => {
-				let selector = `<option value="-1">--SELECCIONAR--</option>`
-				result.forEach(sub => {
-					selector += '<option value="' + sub.id + '">' + sub.subMarca + '</option>';
-			})
-	 	 		subMarca.innerHTML = selector;
-		})
-	}
-		
-	const editar = id => {
-		fetch('/vehiculo/editar/' + id)
-		.then(resp => resp.json())
-		.then(data => {
-			identificador.value = data.id;
-			sucursal.value = data.sucursal.id;
-			tipoAutomovil.value = data.tipoAutomovil.id;
-			numeroSerie.value = data.numeroSerie;
-			marca.value = data.marca.id;
-			getSubMarca(marca.value);
-			modelo.value = data.modelo;
-			color.value = data.color.id;
-			precio.value = data.precio;
-			nPuertas.value = data.nPuertas;
-			kilometraje.value = data.kilometraje;
-			estado.value = data.estado.id;
-			observaciones.value = data.observaciones;
-		})
-	}
-
-	const limpiarCampos = () => {
-		identificador.value = '';
-		tipoAutomovil.value = '-1';
-		numeroSerie.value = '';
-		marca.value = '-1';
-		subMarca.value = '';
-		modelo.value = '';
-		color.value = '-1';
-		estado.value = '-1'; 
-		precio.value = '';
-		nPuertas.value = '';
-		observaciones.value = '';
-		kilometraje.value = '';
-		sucursal.value = '-1';
-	}
-	</script>
   

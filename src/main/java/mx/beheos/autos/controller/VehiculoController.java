@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -49,6 +50,8 @@ public class VehiculoController {
 	
 	@PostMapping("/guardar")
 	public String guardar(Vehiculo vehiculo) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		final String USUARIO_LOGEADO = authentication.getName(); 
 		try {
 			if(vehiculo.getId() != null) {
 				Vehiculo vehiculoTemp = iVehiculoService.getVehiculo(vehiculo.getId());
@@ -56,12 +59,10 @@ public class VehiculoController {
 				vehiculo.setFechaIngreso(vehiculoTemp.getFechaIngreso());
 				vehiculo.setFechaModifico(Utilerias.formatearFecha(new Date()));
 				vehiculo.setUsuarioIngreso(vehiculoTemp.getUsuarioIngreso());
-				//USER SESSION
-				vehiculo.setUsuarioModifico("ADMIN");
+				vehiculo.setUsuarioModifico(USUARIO_LOGEADO);
 			}else {
 				vehiculo.setFechaIngreso(Utilerias.formatearFecha(new Date()));
-				//USER SESSION
-				vehiculo.setUsuarioIngreso("ADMIN");
+				vehiculo.setUsuarioIngreso(USUARIO_LOGEADO);
 			}
 			iVehiculoService.guardar(vehiculo);
 		} catch (Exception e) {

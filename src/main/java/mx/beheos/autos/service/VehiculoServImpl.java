@@ -43,7 +43,7 @@ public class VehiculoServImpl implements IVehiculoService{
 
 	@Override
 	public Page<Vehiculo> findAllVehiculo(Pageable pageable) {
-		return iVehiculoDao.findAll(pageable);
+		return iVehiculoDao.listaVehiculos(pageable);
 	}
 
 	@Override
