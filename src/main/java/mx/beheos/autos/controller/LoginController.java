@@ -20,7 +20,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 
 import mx.beheos.autos.entity.modelo.Roles;
 import mx.beheos.autos.entity.modelo.Usuarios;
@@ -33,8 +33,16 @@ public class LoginController {
 	@Autowired
 	IRegistroService IRegistroService;
 
-	@GetMapping("/")
+	/*@GetMapping("/")
     public String login() {
+        return "login";
+    }*/
+	
+	@GetMapping("/")
+    public String showLoginForm(Model model, @RequestParam(value = "error", required = false) String error) {
+        if (error != null) {
+            model.addAttribute("errorMessage", "El usuario y/o la contraseña son incorrectas");
+        }
         return "login";
     }
 	

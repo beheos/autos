@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -17,6 +18,15 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <!-- /.login-logo -->
+  
+      <c:if test="${not empty errorMessage}">
+        <div class="alert alert-warning alert-dismissible">
+           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+           <h5><i class="icon fas fa-exclamation-triangle"></i> Credenciales Incorrectas!</h5>
+           <p>${errorMessage}</p>
+             	</div>
+      </c:if>
+  
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
       <a href="/" class="h1"><b>A</b>utomovil</a>
