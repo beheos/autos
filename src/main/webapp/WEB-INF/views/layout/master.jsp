@@ -15,6 +15,15 @@
   <link rel="stylesheet" href="../../../resources/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../../resources/dist/css/adminlte.min.css">
+  
+  <style type="text/css">
+  	.activeH:{
+  		background-color:rgba(255,255,255,.9);
+  		color:#343a40;
+  	}
+  	
+  </style>
+  
 </head>
 <!--<body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">-->
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -73,7 +82,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
+          <li class="nav-item">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-car"></i>
               <p>
@@ -82,25 +91,29 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+              <li class="nav-item-hijo">
                 <a href="./index.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+                  <p>Cotización</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link active">
+              <li class="nav-item-hijo">
+                <a href="./index2.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
+                  <p>Nueva Venta</p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
-            </ul>
+            </li>
+			<li class="nav-item-hijo">
+				<a href="./index2.html" class="nav-link">
+				<i class="far fa-circle nav-icon"></i>
+					<p>Ventas</p></a>
+			</li>
+			<li class="nav-item-hijo">
+				<a href="./index2.html" class="nav-link">
+				<i class="far fa-circle nav-icon"></i>
+					<p>Reportes</p></a>
+			</li>
+			</ul>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
@@ -112,22 +125,16 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+               <li class="nav-item-hijo">
                 <a href="/vehiculo/" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Vehiculos</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="./index2.html" class="nav-link active">
+               <li class="nav-item-hijo">
+                <a href="./index2.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
+                  <p>Carga Masiva</p>
                 </a>
               </li>
             </ul>
@@ -135,29 +142,45 @@
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-user"></i>
-              
               <p>
                 Empleados
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
+               <li class="nav-item-hijo">
                 <a href="./index.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v1</p>
+                  <p>Empleados</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item-hijo">
                 <a href="./index2.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
+                  <p>Usuarios</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="./index3.html" class="nav-link">
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Graficas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+               <li class="nav-item-hijo">
+                <a href="./index.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
+                  <p>Ventas</p>
+                </a>
+              </li>
+              <li class="nav-item-hijo">
+                <a href="./index2.html" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Empleado</p>
                 </a>
               </li>
             </ul>
@@ -208,5 +231,7 @@
 <script src="../../../resources/dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../../../resources/dist/js/pages/dashboard2.js"></script>
+<!-- Menu -->
+<script src="../../../resources/build/js/menu.js"></script>
 </body>
 </html>
