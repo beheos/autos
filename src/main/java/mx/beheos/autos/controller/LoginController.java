@@ -78,6 +78,7 @@ public class LoginController {
     }
 	
 	private String encriptarPassword(String password) {
+		password = "Jh0n l3N0n_" + password;
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 		return passwordEncoder.encode(password);
 	}

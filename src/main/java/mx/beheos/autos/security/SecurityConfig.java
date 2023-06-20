@@ -25,11 +25,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	 	@Override
 	    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-	        auth.jdbcAuthentication().dataSource(dataSource)
+	       /* auth.jdbcAuthentication().dataSource(dataSource)
 	            .usersByUsernameQuery("SELECT username, password, enabled FROM usuarios WHERE username = ?")
 	            //.authoritiesByUsernameQuery("SELECT username, role FROM user_roles WHERE username = ?")
 	            .authoritiesByUsernameQuery("SELECT username, rol FROM roles WHERE username = ?")
-	            .rolePrefix("ROLE_");
+	            .rolePrefix("ROLE_");*/
+	 		auth.jdbcAuthentication()
+	        .dataSource(dataSource)
+	        .usersByUsernameQuery("SELECT username, password, enabled FROM usuarios WHERE username = ?")
+	        .authoritiesByUsernameQuery("SELECT username, rol FROM roles WHERE username = ?")
+	        .rolePrefix("ROLE_")
+	        .passwordEncoder(customPasswordEncoder());
+	        
 	    }
 	
 	 	@Override
@@ -54,9 +61,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	    }
 	 
-	 
 	 	@Bean
+	 	public PasswordEncoder customPasswordEncoder() {
+	 	    return new CustomPasswordEncoder();
+	 	}
+	 
+	 	/*@Bean
 	    public PasswordEncoder passwordEncoder() {
 	        return new BCryptPasswordEncoder();
-	    }
+	    }*/
 }
