@@ -1,6 +1,6 @@
+<!DOCTYPE html>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <sec:authentication property="principal.username" var="username" />
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="utf-8">

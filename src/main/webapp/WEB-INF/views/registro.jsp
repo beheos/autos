@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -13,6 +14,15 @@
   <link rel="stylesheet" href="../../resources/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../resources/dist/css/adminlte.min.css">
+  <style type="text/css">
+  .error-message {
+  color: red;
+  font-size: 14px;
+  display: block;
+  margin-top: 4px;
+}
+  </style>
+  
 </head>
 <body class="hold-transition register-page">
 <div class="register-box">
@@ -23,33 +33,36 @@
     <div class="card-body">
       <p class="login-box-msg">Registrarse</p>
 
-      <form action="/registro" method="post">
+      <form:form action="/registro" method="post" modelAttribute="usuarios">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Usuario" name="username">
+          <form:input type="text" class="form-control" placeholder="usuario" path="username" />
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
             </div>
           </div>
         </div>
+        <form:errors path="username" cssClass="error-message"/>
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Correo">
+          <form:input type="text" class="form-control" placeholder="Correo" path="mail" />
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
             </div>
           </div>
         </div>
+          <form:errors path="mail" cssClass="error-message"/>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password">
+          <form:input type="password" class="form-control" placeholder="Contraseña" path="password" />
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
             </div>
           </div>
         </div>
+         <form:errors path="password" cssClass="error-message"/>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Retype password">
+          <input type="password" class="form-control" placeholder="Repetir Contraseña">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -65,7 +78,7 @@
           </div>
           <!-- /.col -->
         </div>
-      </form>
+      </form:form>
       <a href="/" class="text-center">Ir a iniciar Sesión</a>
     </div>
     <!-- /.form-box -->
