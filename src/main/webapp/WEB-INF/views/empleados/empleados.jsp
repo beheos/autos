@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
   <jsp:include page="../layout/master.jsp" />
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -12,439 +13,124 @@
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-lg">
-        Launch Large Modal
-      </button>
     <!-- Main content -->
     <section class="content">
         <div class="card">
             <div class="card-header">
-              <h3 class="card-title">DataTable with default features</h3>
+                  <div class="col-sm-2">
+            		<button type="button" class="btn btn-block btn-info" data-toggle="modal" data-target="#modal-lg" onclick="limpiarCampos()">Agregar</button>
+            	</div>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Rendering engine</th>
-                  <th>Browser</th>
-                  <th>Platform(s)</th>
-                  <th>Engine version</th>
-                  <th>CSS grade</th>
+                  <th>Numero de Empleado</th>
+                  <th>Nombre</th>
+                  <th>Sucursal</th>
+                  <th>Opciones</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 4.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td> 4</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.0
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 5.5
-                  </td>
-                  <td>Win 95+</td>
-                  <td>5.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet
-                    Explorer 6
-                  </td>
-                  <td>Win 98+</td>
-                  <td>6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>Internet Explorer 7</td>
-                  <td>Win XP SP2+</td>
-                  <td>7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Trident</td>
-                  <td>AOL browser (AOL desktop)</td>
-                  <td>Win XP</td>
-                  <td>6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 1.0</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 1.5</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 2.0</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Firefox 3.0</td>
-                  <td>Win 2k+ / OSX.3+</td>
-                  <td>1.9</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Camino 1.0</td>
-                  <td>OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Camino 1.5</td>
-                  <td>OSX.3+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape 7.2</td>
-                  <td>Win 95+ / Mac OS 8.6-9.2</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape Browser 8</td>
-                  <td>Win 98SE+</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Netscape Navigator 9</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.0</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.1</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.2</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.2</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.3</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.3</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.4</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.4</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.5</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.6</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>1.6</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.7</td>
-                  <td>Win 98+ / OSX.1+</td>
-                  <td>1.7</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Mozilla 1.8</td>
-                  <td>Win 98+ / OSX.1+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Seamonkey 1.1</td>
-                  <td>Win 98+ / OSX.2+</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Gecko</td>
-                  <td>Epiphany 2.20</td>
-                  <td>Gnome</td>
-                  <td>1.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.2</td>
-                  <td>OSX.3</td>
-                  <td>125.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 1.3</td>
-                  <td>OSX.3</td>
-                  <td>312.8</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 2.0</td>
-                  <td>OSX.4+</td>
-                  <td>419.3</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>Safari 3.0</td>
-                  <td>OSX.4+</td>
-                  <td>522.1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>OmniWeb 5.5</td>
-                  <td>OSX.4+</td>
-                  <td>420</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>iPod Touch / iPhone</td>
-                  <td>iPod</td>
-                  <td>420.1</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Webkit</td>
-                  <td>S60</td>
-                  <td>S60</td>
-                  <td>413</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 7.0</td>
-                  <td>Win 95+ / OSX.1+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 7.5</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.0</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 8.5</td>
-                  <td>Win 95+ / OSX.2+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.0</td>
-                  <td>Win 95+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.2</td>
-                  <td>Win 88+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera 9.5</td>
-                  <td>Win 88+ / OSX.3+</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Opera for Wii</td>
-                  <td>Wii</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Nokia N800</td>
-                  <td>N800</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Presto</td>
-                  <td>Nintendo DS browser</td>
-                  <td>Nintendo DS</td>
-                  <td>8.5</td>
-                  <td>C/A<sup>1</sup></td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.1</td>
-                  <td>KDE 3.1</td>
-                  <td>3.1</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.3</td>
-                  <td>KDE 3.3</td>
-                  <td>3.3</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>KHTML</td>
-                  <td>Konqureror 3.5</td>
-                  <td>KDE 3.5</td>
-                  <td>3.5</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 4.5</td>
-                  <td>Mac OS 8-9</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 5.1</td>
-                  <td>Mac OS 7.6-9</td>
-                  <td>1</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Tasman</td>
-                  <td>Internet Explorer 5.2</td>
-                  <td>Mac OS 8-X</td>
-                  <td>1</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>NetFront 3.1</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>NetFront 3.4</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>A</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Dillo 0.8</td>
-                  <td>Embedded devices</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Links</td>
-                  <td>Text only</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>Lynx</td>
-                  <td>Text only</td>
-                  <td>-</td>
-                  <td>X</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>IE Mobile</td>
-                  <td>Windows Mobile 6</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Misc</td>
-                  <td>PSP browser</td>
-                  <td>PSP</td>
-                  <td>-</td>
-                  <td>C</td>
-                </tr>
-                <tr>
-                  <td>Other browsers</td>
-                  <td>All others</td>
-                  <td>-</td>
-                  <td>-</td>
-                  <td>U</td>
-                </tr>
+                <c:forEach items="${empleados.content}" var="empleado">
+                	 <tr>
+                	    <td>${empleado.idEmpleado}</td>
+                  		<td>${empleado.nombre} ${empleado.paterno} ${empleado.materno}</td>
+                  		<td>${empleado.sucursal.sucursal}</td>
+                  		<td>
+               				<button type="button" class="btn btn-block btn-outline-info" data-toggle="modal" data-target="#modal-lg" onclick=editar(${empleado.id})>Editar</button>
+               				<button type="button" class="btn btn-block btn-outline-danger"onclick=eliminar(${empleado.id})>Eliminar</button>
+               			</td>
+               		 </tr>
+                </c:forEach>
                 </tbody>
               </table>
             </div>
+            
+                        <!-- Paginado -->
+			<div class="row">
+				<div class="col-sm-12 col-md-5">
+					<div class="dataTables_info" id="example1_info" role="status"
+						aria-live="polite"></div>
+				</div>
+				<div class="col-sm-12 col-md-7">
+					<div class="dataTables_paginate paging_simple_numbers"
+						id="example1_paginate">
+						
+<ul class="pagination">
+  <c:if test="${not empleados.first}">
+    <li class="paginate_button page-item previous">
+      <a href="${pageContext.request.contextPath}/empleados/?page=${empleados.number - 1}" aria-controls="example1"
+        data-dt-idx="0" tabindex="0" class="page-link">Anterior</a>
+    </li>
+  </c:if>
+  <c:choose>
+    <c:when test="${empty empleados or empleados.totalPages == 0}">
+      <!-- No hay registros disponibles -->
+      <!-- Puedes mostrar un mensaje o tomar alguna otra acción adecuada -->
+    </c:when>
+    <c:when test="${empleados.totalPages <= 5}">
+      <c:forEach begin="0" end="${empleados.totalPages - 1}" var="i">
+        <c:choose>
+          <c:when test="${i eq empleados.number}">
+            <li class="paginate_button page-item active">
+              <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">${i + 1}</a>
+            </li>
+          </c:when>
+          <c:otherwise>
+            <li class="paginate_button page-item">
+              <a href="${pageContext.request.contextPath}/empleados/?page=${i}" class="page-link">${i + 1}</a>
+            </li>
+          </c:otherwise>
+        </c:choose>
+      </c:forEach>
+    </c:when>
+    <c:otherwise>
+      <c:set var="startPage" value="${Math.max(0, empleados.number - 2)}" />
+      <c:set var="endPage" value="${Math.min(empleados.totalPages - 1, empleados.number + 2)}" />
+
+      <c:if test="${startPage > 0}">
+        <li class="paginate_button page-item">
+          <a href="${pageContext.request.contextPath}/empleados/?page=${startPage - 1}" class="page-link">...</a>
+        </li>
+      </c:if>
+
+      <c:forEach begin="${startPage}" end="${endPage}" var="i">
+        <c:choose>
+          <c:when test="${i eq empleados.number}">
+            <li class="paginate_button page-item active">
+              <a href="#" aria-controls="example1" data-dt-idx="1" tabindex="0" class="page-link">${i + 1}</a>
+            </li>
+          </c:when>
+          <c:otherwise>
+            <li class="paginate_button page-item">
+              <a href="${pageContext.request.contextPath}/empleados/?page=${i}" class="page-link">${i + 1}</a>
+            </li>
+          </c:otherwise>
+        </c:choose>
+      </c:forEach>
+
+      <c:if test="${endPage < empleados.totalPages - 1}">
+        <li class="paginate_button page-item">
+          <a href="${pageContext.request.contextPath}/empleados/?page=${endPage + 1}" class="page-link">...</a>
+        </li>
+      </c:if>
+    </c:otherwise>
+  </c:choose>
+  <c:if test="${not empleados.last}">
+    <li class="paginate_button page-item next">
+      <a href="${pageContext.request.contextPath}/empleados/?page=${empleados.number + 1}" aria-controls="example1"
+        data-dt-idx="2" tabindex="0" class="page-link">Siguiente</a>
+    </li>
+  </c:if>
+</ul>
+
+					
+					</div>
+				</div>
+			</div>
+            
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
@@ -452,3 +138,78 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  
+  <div class="modal fade" id="modal-lg">
+	<div class="modal-dialog modal-xl">
+		<form action="/empleados/guardar" method="post" onsubmit="return validarFormulario()">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">Empleado</h4>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+				<input type="hidden" class="form-control" name="id" id="identificador">
+					<div class="row">
+						<div class="col-4">
+							<div class="form-group">
+								<label class="col-form-label" for="nombre">Nombre:</label>
+								<input type="text" class="form-control "name="nombre" id="nombre">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
+							<div class="form-group">
+								<label class="col-form-label" for="paterno">Ap Paterno:</label>
+								<input type="text" class="form-control "name="paterno" id="paterno">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
+							<div class="form-group">
+								<label class="col-form-label" for="materno">Ap Materno:</label>
+								<input type="text" class="form-control "name="materno" id="materno">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
+							<div class="form-group">
+								<label class="col-form-label" for="edad">Edad:</label>
+								<input type="text" class="form-control "name="edad" id="edad">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-4">
+							<div class="form-group">
+								<label class="col-form-label" for="sucursal">sucursal:</label> <select
+									class="form-control select2" style="width: 100%;"
+									name="sucursal" id="sucursal">
+									<option value="-1">-- SELECCIONAR --</option>
+									<c:forEach items="${sucursales}" var="sucursal">
+										<option value="${sucursal.id}">${sucursal.sucursal}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer justify-content-between">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						<input type="submit" class="btn btn-info" value="Guardar">
+					</div>
+				</div>
+			</div>
+		</form>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+	<script src="../../../resources/build/js/empleado.js"></script>
+</div>
+<!-- /.modal -->
+  
+  

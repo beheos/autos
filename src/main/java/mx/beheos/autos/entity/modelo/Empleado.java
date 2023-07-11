@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,8 +15,10 @@ public class Empleado {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Long idEmpleado;
-	private Long idSucursal;
+	private String idEmpleado;
+	@ManyToOne
+	@JoinColumn(name = "id_sucursal")
+	private Sucursal sucursal;
 	private String nombre;
 	private String paterno;
 	private String materno;
@@ -23,24 +27,13 @@ public class Empleado {
 	private String usuarioModifico;
 	private String fechaIngreso;
 	private String fechaModifico;
+	private byte enabled;
 	
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public Long getIdEmpleado() {
-		return idEmpleado;
-	}
-	public void setIdEmpleado(Long idEmpleado) {
-		this.idEmpleado = idEmpleado;
-	}
-	public Long getIdSucursal() {
-		return idSucursal;
-	}
-	public void setIdSucursal(Long idSucursal) {
-		this.idSucursal = idSucursal;
 	}
 	public String getNombre() {
 		return nombre;
@@ -90,12 +83,31 @@ public class Empleado {
 	public void setFechaModifico(String fechaModifico) {
 		this.fechaModifico = fechaModifico;
 	}
+	public Sucursal getSucursal() {
+		return sucursal;
+	}
+	public void setSucursal(Sucursal sucursal) {
+		this.sucursal = sucursal;
+	}
+	public String getIdEmpleado() {
+		return idEmpleado;
+	}
+	public void setIdEmpleado(String idEmpleado) {
+		this.idEmpleado = idEmpleado;
+	}
 	@Override
 	public String toString() {
-		return "Empleado [id=" + id + ", idEmpleado=" + idEmpleado + ", idSucursal=" + idSucursal + ", nombre=" + nombre
+		return "Empleado [id=" + id + ", idEmpleado=" + idEmpleado + ", sucursal=" + sucursal + ", nombre=" + nombre
 				+ ", paterno=" + paterno + ", materno=" + materno + ", edad=" + edad + ", usuarioIngreso="
 				+ usuarioIngreso + ", usuarioModifico=" + usuarioModifico + ", fechaIngreso=" + fechaIngreso
 				+ ", fechaModifico=" + fechaModifico + "]";
 	}
+	public byte getEnabled() {
+		return enabled;
+	}
+	public void setEnabled(byte enabled) {
+		this.enabled = enabled;
+	}
+	
 	
 }
