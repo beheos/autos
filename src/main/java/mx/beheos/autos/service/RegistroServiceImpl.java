@@ -33,6 +33,6 @@ public class RegistroServiceImpl implements IRegistroService {
 	public void usuarioCreado(Usuarios usuario, Roles roles) {
 		iUsuariosDao.save(usuario);
 		iRoles.save(roles);
-	}	
+	}
 
 }

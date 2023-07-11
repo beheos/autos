@@ -149,13 +149,13 @@
             </a>
             <ul class="nav nav-treeview">
                <li class="nav-item-hijo">
-                <a href="./index.html" class="nav-link">
+                <a href="/empleados/" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Empleados</p>
                 </a>
               </li>
               <li class="nav-item-hijo">
-                <a href="./index2.html" class="nav-link active">
+                <a href="/usuarios/" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Usuarios</p>
                 </a>

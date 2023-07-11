@@ -43,8 +43,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	    protected void configure(HttpSecurity http) throws Exception {
 		 	http.cors().and().csrf().disable(); //se desahabilita dado que no se usuaran cookies
 	        http.authorizeRequests()
-	            .antMatchers("/vehiculo/*", "/home/").hasAnyRole("ADMIN","USER")
-	            .antMatchers("/admin").hasRole("ADMIN")
+	            .antMatchers("/vehiculo/*", "/ventas/*").hasAnyRole("ADMIN","VENTAS")
+	            .antMatchers("/empleados/*").hasAnyRole("ADMIN","RH")
+	            .antMatchers("/usuarios/*", "/graficas/*").hasRole("ADMIN")
+	            .antMatchers("/home").permitAll()
 	            .anyRequest().permitAll()
 	            .and()
 	            .formLogin()
@@ -58,7 +60,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	            .permitAll()
 	            .and()
 	            .exceptionHandling().accessDeniedPage("/errores/eccesoDenegado");
-
 	    }
 	 
 	 	@Bean

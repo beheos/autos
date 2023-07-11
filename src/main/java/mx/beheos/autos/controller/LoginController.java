@@ -26,6 +26,7 @@ import mx.beheos.autos.entity.modelo.Roles;
 import mx.beheos.autos.entity.modelo.Usuarios;
 import mx.beheos.autos.enums.RolesEnum;
 import mx.beheos.autos.service.IRegistroService;
+import mx.beheos.autos.util.Utilerias;
 
 @Controller
 public class LoginController {
@@ -57,7 +58,7 @@ public class LoginController {
 		if(bindingResult.hasErrors())
 			return "registro";
 		//map.addAttribute("usuario", usuarios);
-		String paswordEncriptado = encriptarPassword(usuarios.getPassword());
+		String paswordEncriptado = Utilerias.encriptarPassword(usuarios.getPassword());
 		usuarios.setPassword(paswordEncriptado);
 		Integer user_habilitado = 1;
 		usuarios.setEnabled(user_habilitado.byteValue());
@@ -77,9 +78,5 @@ public class LoginController {
         return "redirect:/";
     }
 	
-	private String encriptarPassword(String password) {
-		password = "Jh0n l3N0n_" + password;
-		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		return passwordEncoder.encode(password);
-	}
+	
 }

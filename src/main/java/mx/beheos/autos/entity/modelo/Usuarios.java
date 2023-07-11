@@ -4,7 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -23,6 +25,9 @@ public class Usuarios {
 	@NotEmpty(message = "El campo mail no puede ser vacio")
 	@Email(message = "No es un formato Valido para email")
 	private String mail;
+	private String usuarioModifico;
+	private String fechaIngreso;
+	private String fechaModifico;
 	
 	public Long getId() {
 		return id;
@@ -53,6 +58,24 @@ public class Usuarios {
 	}
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	public String getUsuarioModifico() {
+		return usuarioModifico;
+	}
+	public void setUsuarioModifico(String usuarioModifico) {
+		this.usuarioModifico = usuarioModifico;
+	}
+	public String getFechaIngreso() {
+		return fechaIngreso;
+	}
+	public void setFechaIngreso(String fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
+	}
+	public String getFechaModifico() {
+		return fechaModifico;
+	}
+	public void setFechaModifico(String fechaModifico) {
+		this.fechaModifico = fechaModifico;
 	}
 	@Override
 	public String toString() {
