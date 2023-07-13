@@ -19,4 +19,9 @@ public class SucursalServiceImpl implements ISucursalService {
 		return iSucursalDao.findAll();
 	}
 
+	@Override
+	public Sucursal getSucursalBySucursal(String sucursal) {
+		return iSucursalDao.findBySucursal(sucursal);
+	}
+
 }

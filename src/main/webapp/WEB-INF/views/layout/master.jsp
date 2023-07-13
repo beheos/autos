@@ -132,7 +132,7 @@
                 </a>
               </li>
                <li class="nav-item-hijo">
-                <a href="./index2.html" class="nav-link">
+                <a href="/vehiculo/cargamasiva" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Carga Masiva</p>
                 </a>
@@ -217,6 +217,7 @@
 <script src="../../../resources/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../../resources/dist/js/adminlte.js"></script>
+
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->

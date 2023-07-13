@@ -30,4 +30,14 @@ public interface IVehiculoService {
 	
 	List<Estado>getEstados();
 	
+	TipoAutomovil getTipoAutoByTipo(String tipo);
+	
+	Marca getMarcaByMarca(String marca);
+	
+	SubMarca getSubmarcaBySubmarca(String subMarca);
+	
+	Color getColorByColor(String Color);
+	
+	Estado getEstado(Long i);
+	
 }

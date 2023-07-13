@@ -7,4 +7,5 @@ import mx.beheos.autos.entity.modelo.Sucursal;
 public interface ISucursalService {
 
 	List<Sucursal>getSucursales();
+	Sucursal getSucursalBySucursal(String sucursal);
 }

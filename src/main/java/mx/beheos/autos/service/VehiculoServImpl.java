@@ -76,4 +76,29 @@ public class VehiculoServImpl implements IVehiculoService{
 		return iSubMarcaDao.findAllByIdMarca(idMarca);
 	}
 
+	@Override
+	public TipoAutomovil getTipoAutoByTipo(String tipo) {
+		return iTipoVehiculoDao.findByTipo(tipo);
+	}
+
+	@Override
+	public Marca getMarcaByMarca(String marca) {
+		return iMarcaoDao.findByMarca(marca);
+	}
+
+	@Override
+	public SubMarca getSubmarcaBySubmarca(String subMarca) {
+		return iSubMarcaDao.findBySubMarca(subMarca);
+	}
+
+	@Override
+	public Color getColorByColor(String Color) {
+		return iColorDao.findByColor(Color);
+	}
+
+	@Override
+	public Estado getEstado(Long id) {
+		return iEstadoDao.findById(id).orElse(null);
+	}
+
 }
