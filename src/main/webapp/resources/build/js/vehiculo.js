@@ -146,8 +146,5 @@
 	        kilometraje.classList.remove('is-invalid');
 	    }
 	      return true;
-	    }
-	    
-
-	    
+	    }	    
 	    

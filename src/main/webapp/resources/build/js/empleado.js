@@ -45,6 +45,11 @@ const editar = id => {
 
 const eliminar = id => {
 	fetch('/empleados/eliminar/' + id)
+	.then(resp => resp.json())
+	.then(data => {
+		let mensaje = "Se elimino al empleado " + data.idEmpleado + " " + data.nombre + " " + data.paterno; 
+		swal("Empleado Eliminado", mensaje, "success");
+	})
 }
 
 const limpiarcampos = () => {

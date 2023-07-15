@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
@@ -68,7 +69,7 @@ public class VehiculoController {
 	}
 	
 	@PostMapping("/guardar")
-	public String guardar(Vehiculo vehiculo) {
+	public String guardar(Vehiculo vehiculo, RedirectAttributes redirectAttributes) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		final String USUARIO_LOGEADO = authentication.getName(); 
 		try {
@@ -79,21 +80,25 @@ public class VehiculoController {
 				vehiculo.setFechaModifico(Utilerias.formatearFecha(new Date()));
 				vehiculo.setUsuarioIngreso(vehiculoTemp.getUsuarioIngreso());
 				vehiculo.setUsuarioModifico(USUARIO_LOGEADO);
+				redirectAttributes.addFlashAttribute("mensaje", "editado");
 			}else {
 				vehiculo.setFechaIngreso(Utilerias.formatearFecha(new Date()));
 				vehiculo.setUsuarioIngreso(USUARIO_LOGEADO);
+				redirectAttributes.addFlashAttribute("mensaje", "agregado");
 			}
 			iVehiculoService.guardar(vehiculo);
 		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("mensaje", "error");
 			e.printStackTrace();
 		}
 		return "redirect:/vehiculo/";
 	}
 	
 	@PostMapping("/subirCargaMasiva")
-	public String subirCarbaMasiva(@RequestParam("file") MultipartFile file) {
+	public String subirCarbaMasiva(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-		final String USUARIO_LOGEADO = authentication.getName(); 
+		final String USUARIO_LOGEADO = authentication.getName();
+		int contador = 0;
 		try (Workbook workbook = WorkbookFactory.create(file.getInputStream())) {
 			Sheet sheet = workbook.getSheetAt(0);
 			List<String>errores = new ArrayList<>();
@@ -199,13 +204,16 @@ public class VehiculoController {
 					 vehiculo.setFechaIngreso(Utilerias.formatearFecha(new Date()));
 					 vehiculo.setUsuarioIngreso(USUARIO_LOGEADO);
 					 iVehiculoService.guardar(vehiculo);
-					 System.out.println("SE AGREGO UN NUEVO VEHICULO");
+					 contador++;
 				}
 			}
+			redirectAttributes.addFlashAttribute("mensaje", "Ingresaron " + contador + " Vehiculo(s)");
 		}catch(IOException e){
+			redirectAttributes.addFlashAttribute("mensaje", "Ocurrio un error se ingresaron " + contador + " Vehiculos");
 			e.printStackTrace();
 		}
 		return "redirect:/vehiculo/cargamasiva";
+		
 	}
 	
 	@GetMapping("/getSubMarcas/{id}")

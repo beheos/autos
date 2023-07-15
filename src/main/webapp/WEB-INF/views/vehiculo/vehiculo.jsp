@@ -294,6 +294,18 @@
 		<!-- /.modal-content -->
 	</div>
 	<!-- /.modal-dialog -->
+	<script type="text/javascript">
+	var mensaje = "<%= request.getAttribute("mensaje") %>";
+    if (mensaje && mensaje != "null" && mensaje.trim().length > 0) {
+		if(mensaje == 'agregado')
+        	swal("Ingresado", "El vehículo se agregó al inventario", "success");
+		else if(mensaje == 'editado')
+			swal("Modificado", "El vehículo ha sido modificado", "success");
+		else
+			swal("Error", "No fue posible ingresar el vehículo", "error");		
+    }
+	</script>
+	
 	<script src="../../../resources/build/js/vehiculo.js"></script>
 </div>
 <!-- /.modal -->

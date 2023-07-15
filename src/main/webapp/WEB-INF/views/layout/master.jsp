@@ -234,5 +234,8 @@
 <script src="../../../resources/dist/js/pages/dashboard2.js"></script>
 <!-- Menu -->
 <script src="../../../resources/build/js/menu.js"></script>
+<!-- Sweet Alert 2 -->
+<!--<script src="../../../resources/build/js/sweetAlert2.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
 </body>
 </html>

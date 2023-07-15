@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
 import mx.beheos.autos.entity.modelo.Empleado;
-import mx.beheos.autos.entity.modelo.Vehiculo;
 import mx.beheos.autos.service.IEmpleadoService;
 import mx.beheos.autos.service.ISucursalService;
 import mx.beheos.autos.util.Utilerias;
@@ -44,9 +44,10 @@ public class EmpleadosController {
 	}
 	
 	@PostMapping("/guardar")
-	public String guardar(Empleado empleado) {
+	public String guardar(Empleado empleado, RedirectAttributes redirectAttributes) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		final String USUARIO_LOGEADO = authentication.getName();
+		String textoMensaje = "";
 		try {
 			if(empleado.getId() != null) {
 				Empleado empTemp = iEmpleadoService.getEmpleado(empleado.getId());
@@ -56,14 +57,18 @@ public class EmpleadosController {
 				empleado.setFechaModifico(Utilerias.formatearFecha(new Date()));
 				empleado.setUsuarioModifico(USUARIO_LOGEADO);
 				empleado.setEnabled(empTemp.getEnabled());
+				textoMensaje = "Se modifico al empleado ";
 			}else {
 				empleado.setFechaIngreso(Utilerias.formatearFecha(new Date()));
 				empleado.setUsuarioIngreso(USUARIO_LOGEADO);
 				empleado.setIdEmpleado(Utilerias.generarIdEmpleado());
 				empleado.setEnabled((byte) 1);
+				textoMensaje = "Se agrego al empleado ";
 			}
-			iEmpleadoService.guardar(empleado);
+			empleado = iEmpleadoService.guardar(empleado);
+			redirectAttributes.addFlashAttribute("mensaje", textoMensaje + empleado.getIdEmpleado() + " " + empleado.getNombre() + " " + empleado.getPaterno());
 		} catch (Exception e) {
+			redirectAttributes.addFlashAttribute("mensaje", "Ocurrio un error al ingresar al empleado");
 			e.printStackTrace();
 		}
 		return "redirect:/empleados/";
@@ -77,14 +82,20 @@ public class EmpleadosController {
 	}
 	
 	@GetMapping("/eliminar/{id}")
-	public String eliminar(@PathVariable Long id) {
+	public @ResponseBody String eliminar(@PathVariable Long id) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		final String USUARIO_LOGEADO = authentication.getName();
-		Empleado empTemp = iEmpleadoService.getEmpleado(id);
-		empTemp.setEnabled((byte) 0);
-		empTemp.setUsuarioModifico(USUARIO_LOGEADO);
-		empTemp.setFechaModifico(Utilerias.formatearFecha(new Date()));
-		iEmpleadoService.guardar(empTemp);
-		return "redirect:/empleados/";
+		Gson gson = new Gson();
+		try {
+			Empleado empleado = iEmpleadoService.getEmpleado(id);
+			empleado.setEnabled((byte) 0);
+			empleado.setUsuarioModifico(USUARIO_LOGEADO);
+			empleado.setFechaModifico(Utilerias.formatearFecha(new Date()));
+			empleado = iEmpleadoService.guardar(empleado);
+			return gson.toJson(empleado);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

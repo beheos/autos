@@ -36,6 +36,17 @@
           <!-- /.card -->
           </div>
     </section>
+    
+    <script type="text/javascript">
+	var mensaje = "<%= request.getAttribute("mensaje") %>";
+    if (mensaje && mensaje != "null" && mensaje.trim().length > 0) {
+    	if (mensaje.startsWith("Ingresaron")) 
+        	swal("Ingresado", mensaje, "success");
+		else
+			swal("Error", mensaje, "error");		
+    }
+	</script>
+    
     <!-- /.content -->
     <script src="../../../resources/build/js/vehiculoExcel.js"></script>
     <!-- bs-custom-file-input -->

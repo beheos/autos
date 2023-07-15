@@ -216,6 +216,15 @@
 		</form>
 		<!-- /.modal-content -->
 	</div>
+	    <script type="text/javascript">
+	var mensaje = "<%= request.getAttribute("mensaje") %>";
+    if (mensaje && mensaje != "null" && mensaje.trim().length > 0) {
+    	if (mensaje.startsWith("Se modifico")) 
+        	swal("Usuario Modificado", mensaje, "success");
+		else
+			swal("Error", mensaje, "error");		
+    }
+	</script>
 	<!-- /.modal-dialog -->
 	<script src="../../../resources/build/js/usuario.js"></script>
 </div>

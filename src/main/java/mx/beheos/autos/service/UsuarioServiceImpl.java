@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import mx.beheos.autos.dao.IUsuariosDao;
 import mx.beheos.autos.entity.modelo.Usuarios;
-import mx.beheos.autos.entity.modeloDTO.UsuariosDTO;
 
 @Service
 public class UsuarioServiceImpl implements IUsuarioService{
